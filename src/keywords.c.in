@@ -42,6 +42,12 @@
 #ifdef __FLT128X_MANT_DIG__
 #error "unsupported"
 #endif
+/* C11 J.5.6 __int128 type.  */
+typedef struct
+{
+  unsigned long long low;
+  long long high;
+} __int128_t;
 /* Replace GCC built-ins with the corresponding type or expression.  */
 #define __builtin_bswap16(x) \
     ((u_int16_t) ((((x) >> 8) & 0xff) | (((x) & 0xff) << 8)))

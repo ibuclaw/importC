@@ -7,7 +7,16 @@ BUILD=release
 endif
 
 IN_KEYWORDS = src/keywords.c.in
-IN_HEADERS = $(wildcard src/stdc/*.h.in)
+IN_HEADERS = $(wildcard src/stdc/*.h.in) \
+	     $(wildcard src/sys/linux/*.h.in) \
+	     $(wildcard src/sys/sys/linux/netinet/*.h.in) \
+	     $(wildcard src/sys/sys/linux/sys/*.h.in) \
+	     $(wildcard src/sys/posix/*.h.in) \
+	     $(wildcard src/sys/sys/posix/arpa/*.h.in) \
+	     $(wildcard src/sys/sys/posix/net/*.h.in) \
+	     $(wildcard src/sys/sys/posix/netinet/*.h.in) \
+	     $(wildcard src/sys/sys/posix/stdc/*.h.in) \
+	     $(wildcard src/sys/sys/posix/sys/*.h.in)
 OUT_HEADERS = $(subst src/,generated/,$(patsubst %.h.in,%.c,$(IN_HEADERS)))
 OUT_DIRECTORIES = $(sort $(dir $(OUT_HEADERS)))
 TEST_RESULTS = $(patsubst %.c,%.o,$(OUT_HEADERS))
