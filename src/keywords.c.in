@@ -1,6 +1,13 @@
+/* Conformance of ISO C11 is required when including definitions.  */
+#define __STRICT_ANSI__ 1
+#define _ISOC99_SOURCE 1
+#define _ISOC11_SOURCE 1
+/* Enable the default set of features for IEEE Std 1003.1.  */
+#define _DEFAULT_SOURCE 1
 /* Use the preprocessor to translate alternate keywords
    into more standard conventions.  */
 #define __FUNCTION__ __func__
+#define __PRETTY_FUNCTION__ __func__
 #define __alignof   _Alignof
 #define __alighof__ _Alignof
 #define __asm       asm
@@ -63,6 +70,8 @@ typedef struct
      | (((x) & 0x0000000000ff0000ull) << 24) \
      | (((x) & 0x000000000000ff00ull) << 40) \
      | (((x) & 0x00000000000000ffull) << 56))
+/* va_list is now built-in to the compiler.  */
+#if 0
 /* Provide user declarations of the built-in va_list type.  */
 #if defined(__i386__)
 typedef char* __builtin_va_list;
@@ -77,4 +86,5 @@ typedef struct
 typedef __va_list_tag __builtin_va_list[1];
 #else
 #error "unsupported"
+#endif
 #endif
